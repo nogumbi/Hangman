@@ -1,9 +1,12 @@
 # Problems - Hangman
+Iteration 1: The player has one chance to guess the entire word that is chosen randomly from a predefined list.
+Notice how we are simplifying the rules of the game. We don’t worry about guessing letters, and the player either survives or dies after just one guess. Importantly, we focus on choosing a random word from a list, and checking if the guessed word matches the chosen word.
 
-* Modify `hangman.py` to solve the problem as stated in {{%content-link%}}.
-* Use the `short_words.txt` file for the list of words to select from.
-* You can run the program using the instructions in *To Run* below.
-* You can test technical correctness by running the unit tests as in the section *To Test* below.
+Iteration 2: The player can also load different word lists and gets hints for their guesses.
+
+Iteration 3: The player makes guesses one letter at a time until they win or die. We also draw the hangman with each guess so that the player knows how many chances are left.
+
+
 
 ### To Run
 
