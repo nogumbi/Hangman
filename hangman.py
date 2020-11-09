@@ -1,33 +1,58 @@
-#TIP: use random.randint to get a random word from the list
 import random
 
+
 def read_file(file_name):
-    f = open(file_name, 'r')
-    files = f.readlines()
-    return files
+    file = open(file_name,'r')
+    return file.readlines()
 
 
 def select_random_word(words):
-    wordlist = random.randint(0, len(words)-1)
-    word = words[wordlist]
-    blank = words[wordlist]
-    print('Guess the word: ' + blank[:0]+'_'+blank[1+0:])
+    random_index = random.randint(0, len(words)-1)
+    word = words[random_index]
     return word
+
+
+def select_random_letter_from(word):
+    random_index = random.randint(0, len(word) - 1)
+    letter = word[random_index]
+    print('Guess the word: ' + word[:random_index] + "_" + word[random_index+1:])
+    return letter, random_index
 
 
 def get_user_input():
     return input('Guess the missing letter: ')
-    
+
+
+def show_answer(answer, selected_word, missing_letter_index):
+    missing_letter_index = "The word was: " + selected_word
+    print(missing_letter_index)
+    if answer in selected_word:
+        print("Well done! You are awesome!")
+    elif answer not in selected_word:
+        print("Wrong! Do better next time.")
+    pass
+
+
+# TODO: Step 2
+def ask_file_name():
+    ask_name = input("Words file? [leave empty to use short_words.txt] :" + "")
+    if not ask_name:
+        return 'short_words.txt'
+    else:
+        return ask_name
+
 def run_game(file_name):
     """
-    This is the main game code. You can leave it as is and only implement steps 1 to 3 as indicated above.
+    You can leave this code as is, and only implemented above where the code comments prompt you.
     """
     words = read_file(file_name)
     word = select_random_word(words)
+    missing_letter, letter_index = select_random_letter_from(word)
     answer = get_user_input()
-    print('The word was: '+word)
+    show_answer(answer, word, letter_index)
 
 
 if __name__ == "__main__":
-    run_game('short_words.txt')
+    words_file = ask_file_name()
+    run_game(words_file)
 
